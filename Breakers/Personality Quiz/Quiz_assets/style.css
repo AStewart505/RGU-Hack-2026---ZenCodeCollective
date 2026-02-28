@@ -15,6 +15,9 @@ body {
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 /* Progress Bar */
@@ -34,16 +37,33 @@ body {
   transition: width 0.3s ease;
 }
 
+#pageIndicator {
+  font-size: 13px;
+  color: #666;
+  margin: 5px 0 10px;
+}
+
 /* Question */
 h2 {
-  font-size: 18px;
-  margin-top: 20px;
-  min-height: 50px;
+  font-size: 16px;          
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: auto;
+}
+
+/* Question block spacing */
+.questionBlock {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.questionBlock:last-child {
+  border-bottom: none;
 }
 
 /* Scale Layout */
 .options {
-  margin-top: 30px;
+  margin-top: 10px; 
 }
 
 .scale {
@@ -54,8 +74,8 @@ h2 {
 
 /* Base Circle */
 .circle {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 2px solid #ccc;
   cursor: pointer;
@@ -130,11 +150,15 @@ h2 {
 
 /* Navigation Buttons */
 .navigation {
-  margin-top: 35px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
-}
 
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding-top: 10px;
+}
 button {
   padding: 10px 20px;
   border: none;
@@ -152,12 +176,14 @@ button {
   background: #ccc;
 }
 
-#nextBtn {
+#nextBtn,
+#submitBtn {
   background: #4caf50;
   color: white;
 }
 
-#nextBtn:hover {
+#nextBtn:hover,
+#submitBtn:hover {
   background: #43a047;
 }
 
