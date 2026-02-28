@@ -8,6 +8,7 @@ body {
   margin: 0;
 }
 
+/* Makes the quiz scroll if 5 questions are too tall */
 .container {
   width: 380px;
   text-align: center;
@@ -37,6 +38,7 @@ body {
   transition: width 0.3s ease;
 }
 
+/* Optional page indicator */
 #pageIndicator {
   font-size: 13px;
   color: #666;
@@ -45,7 +47,7 @@ body {
 
 /* Question */
 h2 {
-  font-size: 16px;          
+  font-size: 16px;          /* slightly smaller so 5 fit nicely */
   margin-top: 10px;
   margin-bottom: 10px;
   min-height: auto;
@@ -63,7 +65,7 @@ h2 {
 
 /* Scale Layout */
 .options {
-  margin-top: 10px; 
+  margin-top: 10px; /* reduced from 30px to fit 5 questions */
 }
 
 .scale {
@@ -74,7 +76,7 @@ h2 {
 
 /* Base Circle */
 .circle {
-  width: 38px;
+  width: 38px; /* slightly smaller for cleaner fit */
   height: 38px;
   border-radius: 50%;
   border: 2px solid #ccc;
@@ -139,7 +141,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  margin-top: 10px;
+  margin-top: 8px;
   color: #666;
   text-align: center;
 }
@@ -159,8 +161,10 @@ h2 {
   background: white;
   padding-top: 10px;
 }
+
+/* Buttons */
 button {
-  padding: 10px 20px;
+  padding: 10px 18px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
