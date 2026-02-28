@@ -2,10 +2,12 @@ body {
   font-family: Arial, sans-serif;
   background: #f8f9fb;
   display: flex;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
+  padding: 20px;
 }
 
 /* Makes the quiz scroll if 5 questions are too tall */

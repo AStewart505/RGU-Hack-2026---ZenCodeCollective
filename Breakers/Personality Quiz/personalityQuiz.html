@@ -6,26 +6,24 @@
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- Progress Bar -->
-  <div class="progress-bar">
-    <div id="progress"></div>
+    <div class="progress-bar">
+      <div id="progress"></div>
+    </div>
+
+    <p id="pageIndicator">Page 1 of 3</p>
+
+    <div id="quiz"></div>
+
+    <div class="navigation">
+      <button id="backBtn">Back</button>
+      <button id="nextBtn">Next</button>
+      <button id="submitBtn" style="display:none;">Submit</button>
+    </div>
+
   </div>
-  </div>
- <p id="pageIndicator"></p>
 
-  <!-- JS will inject 5 questions here -->
-  <div id="quiz"></div>
-
-  <div class="navigation">
-    <button id="backBtn">Back</button>
-    <button id="nextBtn">Next</button>
-    <button id="submitBtn" style="display:none;">Submit</button>
-  </div>
-
-</div>
-
-<script src="Quiz_assets/script.js"></script>
+  <script src="Quiz_assets/script.js"></script>
 </body>
 </html>
