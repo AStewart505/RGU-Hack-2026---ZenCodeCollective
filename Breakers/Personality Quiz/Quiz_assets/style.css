@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 350px;
+  text-align: center;
+}
+
+.progress-bar {
+  background: #ddd;
+  height: 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#progress {
+  height: 8px;
+  width: 0%;
+  background: #4caf50;
+  border-radius: 5px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.circle.selected {
+  background: #4caf50;
+  border-color: #4caf50;
+}
