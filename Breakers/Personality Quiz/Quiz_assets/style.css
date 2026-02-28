@@ -5,18 +5,25 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 .container {
-  width: 350px;
+  width: 380px;
   text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
+/* Progress Bar */
 .progress-bar {
-  background: #ddd;
+  background: #e0e0e0;
   height: 8px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
 }
 
 #progress {
@@ -24,23 +31,141 @@ body {
   width: 0%;
   background: #4caf50;
   border-radius: 5px;
+  transition: width 0.3s ease;
 }
 
+/* Question */
+h2 {
+  font-size: 18px;
+  margin-top: 20px;
+  min-height: 50px;
+}
+
+/* Scale Layout */
 .options {
-  display: flex;
-  justify-content: space-between;
   margin-top: 30px;
 }
 
+.scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Base Circle */
 .circle {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: 2px solid #ccc;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Red → Green border colors */
+.circle[data-value="1"] {
+  border-color: #e53935; /* Red */
+}
+
+.circle[data-value="2"] {
+  border-color: #fb8c00; /* Orange */
+}
+
+.circle[data-value="3"] {
+  border-color: #fbc02d; /* Yellow */
+}
+
+.circle[data-value="4"] {
+  border-color: #7cb342; /* Light Green */
+}
+
+.circle[data-value="5"] {
+  border-color: #2e7d32; /* Dark Green */
+}
+
+/* Hover effect */
+.circle:hover {
+  transform: scale(1.05);
+}
+
+/* Selected states */
+.circle[data-value="1"].selected {
+  background: #e53935;
+}
+
+.circle[data-value="2"].selected {
+  background: #fb8c00;
+}
+
+.circle[data-value="3"].selected {
+  background: #fbc02d;
+}
+
+.circle[data-value="4"].selected {
+  background: #7cb342;
+}
+
+.circle[data-value="5"].selected {
+  background: #2e7d32;
 }
 
 .circle.selected {
+  transform: scale(1.15);
+  border-color: transparent;
+}
+
+/* Labels under circles */
+.labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-top: 10px;
+  color: #666;
+  text-align: center;
+}
+
+.labels span {
+  width: 60px;
+}
+
+/* Navigation Buttons */
+.navigation {
+  margin-top: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#backBtn {
+  background: #ddd;
+}
+
+#backBtn:hover {
+  background: #ccc;
+}
+
+#nextBtn {
   background: #4caf50;
-  border-color: #4caf50;
+  color: white;
+}
+
+#nextBtn:hover {
+  background: #43a047;
+}
+
+/* Result screen styling */
+.result {
+  text-align: center;
+}
+
+.result h2 {
+  margin-bottom: 15px;
 }
