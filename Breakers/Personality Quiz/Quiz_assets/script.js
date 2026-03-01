@@ -1,4 +1,3 @@
-
 const questions = [
   // Section 1 (Q1–Q5)
   { text: "", type: "hacker" },
@@ -156,6 +155,11 @@ submitBtn.addEventListener("click", () => {
   calculateResult();
 });
 
+// Helper to display nice names if we ever need it
+function titleCase(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 function calculateResult() {
   let scores = { hacker: 0, hipster: 0, hustler: 0 };
 
@@ -164,12 +168,35 @@ function calculateResult() {
     scores[type] += value; // value is 1..5
   });
 
-  const result = Object.keys(scores).reduce((a, b) =>
-    scores[a] > scores[b] ? a : b
-  );
+  // Determine the max score and handle ties
+  const maxScore = Math.max(scores.hacker, scores.hipster, scores.hustler);
+  const topTypes = Object.keys(scores).filter(t => scores[t] === maxScore);
+
+  let finalCharacter = "";
+
+  // 3-way tie -> Unicorn
+  if (topTypes.length === 3) {
+    finalCharacter = "Unicorn";
+  }
+  // 2-way tie -> combos
+  else if (topTypes.length === 2) {
+    const pair = topTypes.sort().join("+");
+
+    const comboMap = {
+      "hacker+hustler": "Growth Hacker",
+      "hacker+hipster": "Tech Hipster",
+      "hipster+hustler": "Creative Entrepreneur"
+    };
+
+    finalCharacter = comboMap[pair] || topTypes.map(titleCase).join(" & ");
+  }
+  // Single winner -> base character
+  else {
+    finalCharacter = titleCase(topTypes[0]); // Hacker / Hipster / Hustler
+  }
 
   document.querySelector(".container").innerHTML = `
-    <h2>You are a ${result.toUpperCase()}!</h2>
+    <h2>You are a ${finalCharacter}!</h2>
     <p>Your scores:</p>
     <p>Hacker: ${scores.hacker}</p>
     <p>Hipster: ${scores.hipster}</p>
