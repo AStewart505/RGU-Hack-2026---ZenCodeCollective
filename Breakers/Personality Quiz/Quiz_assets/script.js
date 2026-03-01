@@ -1,24 +1,24 @@
 const questions = [
   // Section 1 (Q1–Q5)
-  { text: "", type: "hacker" },
-  { text: "", type: "hipster" },
-  { text: "", type: "hustler" },
-  { text: "", type: "hacker" },
-  { text: "", type: "hipster" },
+  { text: "You like working on backend more than frontend", type: "hacker" },
+  { text: "You prefer working in a team over working alone", type: "hipster" },
+  { text: "You are more interested in building products than in selling them", type: "hustler" },
+  { text: "You like to experiment with new technologies", type: "hacker" },
+  { text: "You are more interested in design than in functionality", type: "hipster" },
 
   // Section 2 (Q6–Q10)
-  { text: "", type: "hustler" },
-  { text: "", type: "hacker" },
-  { text: "", type: "hipster" },
-  { text: "", type: "hustler" },
-  { text: "", type: "hacker" },
+  { text: "You are more motivated by money than by passion", type: "hustler" },
+  { text: "You are more interested in learning than in teaching", type: "hacker" },
+  { text: "You are more interested in the process than in the outcome", type: "hipster" },
+  { text: "You are more interested in building than in breaking", type: "hustler" },
+  { text: "You are more interested in solving problems than in creating them", type: "hacker" },
 
   // Section 3 (Q11–Q15)
-  { text: "", type: "hipster" },
-  { text: "", type: "hustler" },
-  { text: "", type: "hacker" },
-  { text: "", type: "hipster" },
-  { text: "", type: "hustler" }
+  { text: "You are always looking into new trends", type: "hipster" },
+  { text: "You are more interested in creating than in consuming", type: "hustler" },
+  { text: "You are more interested in innovation than in tradition", type: "hacker" },
+  { text: "You are more interested in the future than in the past", type: "hipster" },
+  { text: "You are more interested in results than in effort", type: "hustler" }
 ];
 
 const QUESTIONS_PER_PAGE = 5;
@@ -230,9 +230,8 @@ document.querySelector(".container").innerHTML = `
   <img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
   <h2>You are a ${finalCharacter}!</h2>
   <p>${description}</p>
-  ;
+`;
 }
 
 // Initial render
 renderPage();
-
