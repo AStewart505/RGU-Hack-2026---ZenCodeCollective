@@ -2,21 +2,34 @@ body {
   font-family: Arial, sans-serif;
   background: #f8f9fb;
   display: flex;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
 }
 
+/* Makes the quiz scroll if 5 questions are too tall */
 .container {
-  width: 350px;
+  width: 380px;
   text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
+/* Progress Bar */
 .progress-bar {
-  background: #ddd;
+  background: #e0e0e0;
   height: 8px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
 }
 
 #progress {
@@ -24,23 +37,167 @@ body {
   width: 0%;
   background: #4caf50;
   border-radius: 5px;
+  transition: width 0.3s ease;
 }
 
+/* Optional page indicator */
+#pageIndicator {
+  font-size: 13px;
+  color: #666;
+  margin: 5px 0 10px;
+}
+
+/* Question */
+h2 {
+  font-size: 16px;          /* slightly smaller so 5 fit nicely */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: auto;
+}
+
+/* Question block spacing */
+.questionBlock {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.questionBlock:last-child {
+  border-bottom: none;
+}
+
+/* Scale Layout */
 .options {
+  margin-top: 10px; /* reduced from 30px to fit 5 questions */
+}
+
+.scale {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  align-items: center;
 }
 
+/* Base Circle */
 .circle {
-  width: 40px;
-  height: 40px;
+  width: 38px; /* slightly smaller for cleaner fit */
+  height: 38px;
   border-radius: 50%;
   border: 2px solid #ccc;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Red → Green border colors */
+.circle[data-value="1"] {
+  border-color: #e53935; /* Red */
+}
+
+.circle[data-value="2"] {
+  border-color: #fb8c00; /* Orange */
+}
+
+.circle[data-value="3"] {
+  border-color: #fbc02d; /* Yellow */
+}
+
+.circle[data-value="4"] {
+  border-color: #7cb342; /* Light Green */
+}
+
+.circle[data-value="5"] {
+  border-color: #2e7d32; /* Dark Green */
+}
+
+/* Hover effect */
+.circle:hover {
+  transform: scale(1.05);
+}
+
+/* Selected states */
+.circle[data-value="1"].selected {
+  background: #e53935;
+}
+
+.circle[data-value="2"].selected {
+  background: #fb8c00;
+}
+
+.circle[data-value="3"].selected {
+  background: #fbc02d;
+}
+
+.circle[data-value="4"].selected {
+  background: #7cb342;
+}
+
+.circle[data-value="5"].selected {
+  background: #2e7d32;
 }
 
 .circle.selected {
+  transform: scale(1.15);
+  border-color: transparent;
+}
+
+/* Labels under circles */
+.labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-top: 8px;
+  color: #666;
+  text-align: center;
+}
+
+.labels span {
+  width: 60px;
+}
+
+/* Navigation Buttons */
+.navigation {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding-top: 10px;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#backBtn {
+  background: #ddd;
+}
+
+#backBtn:hover {
+  background: #ccc;
+}
+
+#nextBtn,
+#submitBtn {
   background: #4caf50;
-  border-color: #4caf50;
+  color: white;
+}
+
+#nextBtn:hover,
+#submitBtn:hover {
+  background: #43a047;
+}
+
+/* Result screen styling */
+.result {
+  text-align: center;
+}
+
+.result h2 {
+  margin-bottom: 15px;
 }
