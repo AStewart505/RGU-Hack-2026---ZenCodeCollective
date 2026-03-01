@@ -231,7 +231,7 @@ document.querySelector(".container").innerHTML =
   `<img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
   <h2>You are a ${finalCharacter}!</h2>
   <p>${description}</p>
-  ;
+  `;
 }
 
 // Initial render
