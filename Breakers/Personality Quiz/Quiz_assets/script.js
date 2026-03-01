@@ -173,10 +173,12 @@ function calculateResult() {
   const topTypes = Object.keys(scores).filter(t => scores[t] === maxScore);
 
   let finalCharacter = "";
+  let description = "";
 
   // 3-way tie -> Unicorn
   if (topTypes.length === 3) {
     finalCharacter = "Unicorn";
+    description = "Which means you are a Hacker, a Hipster, and a Hustler.";
   }
   // 2-way tie -> combos
   else if (topTypes.length === 2) {
@@ -189,18 +191,33 @@ function calculateResult() {
     };
 
     finalCharacter = comboMap[pair] || topTypes.map(titleCase).join(" & ");
+
+    // Add the simple “which means…” line for each combo
+    if (pair === "hacker+hustler") {
+      description = "Which means you are both a Hacker and a Hustler.";
+    } else if (pair === "hacker+hipster") {
+      description = "Which means you are both a Hacker and a Hipster.";
+    } else if (pair === "hipster+hustler") {
+      description = "Which means you are both a Hipster and a Hustler.";
+    }
   }
-  // Single winner -> base character
+  // Single winner -> base character (keep these explanations)
   else {
-    finalCharacter = titleCase(topTypes[0]); // Hacker / Hipster / Hustler
+    const winner = topTypes[0]; // hacker / hipster / hustler
+    finalCharacter = titleCase(winner);
+
+    if (winner === "hacker") {
+      description = "You’re analytical and love solving problems by understanding how things work.";
+    } else if (winner === "hipster") {
+      description = "You’re creative and care about making things feel smooth, unique, and user-friendly.";
+    } else {
+      description = "You’re action-focused and thrive on getting things done quickly and effectively.";
+    }
   }
 
   document.querySelector(".container").innerHTML = `
     <h2>You are a ${finalCharacter}!</h2>
-    <p>Your scores:</p>
-    <p>Hacker: ${scores.hacker}</p>
-    <p>Hipster: ${scores.hipster}</p>
-    <p>Hustler: ${scores.hustler}</p>
+    <p>${description}</p>
   `;
 }
 
