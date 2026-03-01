@@ -201,3 +201,11 @@ button {
 .result h2 {
   margin-bottom: 15px;
 }
+.result-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}

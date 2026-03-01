@@ -1,4 +1,3 @@
-
 const questions = [
   // Section 1 (Q1–Q5)
   { text: "", type: "hacker" },
@@ -156,6 +155,11 @@ submitBtn.addEventListener("click", () => {
   calculateResult();
 });
 
+// Helper to display nice names if we ever need it
+function titleCase(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 function calculateResult() {
   let scores = { hacker: 0, hipster: 0, hustler: 0 };
 
@@ -164,18 +168,71 @@ function calculateResult() {
     scores[type] += value; // value is 1..5
   });
 
-  const result = Object.keys(scores).reduce((a, b) =>
-    scores[a] > scores[b] ? a : b
-  );
+  // Determine the max score and handle ties
+  const maxScore = Math.max(scores.hacker, scores.hipster, scores.hustler);
+  const topTypes = Object.keys(scores).filter(t => scores[t] === maxScore);
 
-  document.querySelector(".container").innerHTML = `
-    <h2>You are a ${result.toUpperCase()}!</h2>
-    <p>Your scores:</p>
-    <p>Hacker: ${scores.hacker}</p>
-    <p>Hipster: ${scores.hipster}</p>
-    <p>Hustler: ${scores.hustler}</p>
-  `;
+  let finalCharacter = "";
+  let description = "";
+
+  // 3-way tie -> Unicorn
+  if (topTypes.length === 3) {
+    finalCharacter = "Unicorn";
+    description = "Which means you are a Hacker, a Hipster, and a Hustler.";
+  }
+  // 2-way tie -> combos
+  else if (topTypes.length === 2) {
+    const pair = topTypes.sort().join("+");
+
+    const comboMap = {
+      "hacker+hustler": "Growth Hacker",
+      "hacker+hipster": "Tech Hipster",
+      "hipster+hustler": "Creative Entrepreneur"
+    };
+
+    finalCharacter = comboMap[pair] || topTypes.map(titleCase).join(" & ");
+
+    // Add the simple “which means…” line for each combo
+    if (pair === "hacker+hustler") {
+      description = "Which means you are both a Hacker and a Hustler.";
+    } else if (pair === "hacker+hipster") {
+      description = "Which means you are both a Hacker and a Hipster.";
+    } else if (pair === "hipster+hustler") {
+      description = "Which means you are both a Hipster and a Hustler.";
+    }
+  }
+  // Single winner -> base character (keep these explanations)
+  else {
+    const winner = topTypes[0]; // hacker / hipster / hustler
+    finalCharacter = titleCase(winner);
+
+    if (winner === "hacker") {
+      description = "You’re analytical and love solving problems by understanding how things work.";
+    } else if (winner === "hipster") {
+      description = "You’re creative and care about making things feel smooth, unique, and user-friendly.";
+    } else {
+      description = "You’re action-focused and thrive on getting things done quickly and effectively.";
+    }
+  }
+  // decide which image to show
+let imageName = finalCharacter.toLowerCase().replace(/ /g, "-");
+
+// special cases to match file names
+if (finalCharacter === "Hacker") imageName = "hacker";
+if (finalCharacter === "Hipster") imageName = "hipster";
+if (finalCharacter === "Hustler") imageName = "hustler";
+//if (finalCharacter === "Growth Hacker") imageName = "growth-hacker";
+//if (finalCharacter === "Tech Hipster") imageName = "tech-hipster";
+//if (finalCharacter === "Creative Entrepreneur") imageName = "creative-entrepreneur";
+//if (finalCharacter === "Unicorn") imageName = "unicorn";
+
+document.querySelector(".container").innerHTML = `
+  <img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
+  <h2>You are a ${finalCharacter}!</h2>
+  <p>${description}</p>
+  ;
 }
 
 // Initial render
 renderPage();
+
