@@ -12,7 +12,7 @@ body {
 
 /* Makes the quiz scroll if 5 questions are too tall */
 .container {
-  width: 380px;
+  width: 560px;
   text-align: center;
   background: white;
   padding: 30px;
@@ -201,9 +201,19 @@ button {
 .result h2 {
   margin-bottom: 15px;
 }
+
 .result-image {
   width: 180px;
   height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.result-image.large {
+  width: 560px;
+  height: 220px;
   object-fit: cover;
   border-radius: 15px;
   margin-bottom: 15px;

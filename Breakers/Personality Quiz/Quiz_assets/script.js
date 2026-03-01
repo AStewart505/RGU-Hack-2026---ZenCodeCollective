@@ -219,19 +219,30 @@ function calculateResult() {
 let imageName = finalCharacter.toLowerCase().replace(/ /g, "-");
 
 // special cases to match file names
-if (finalCharacter === "Hacker") imageName = "hacker";
-if (finalCharacter === "Hipster") imageName = "hipster";
-if (finalCharacter === "Hustler") imageName = "hustler";
-//if (finalCharacter === "Growth Hacker") imageName = "growth-hacker";
-//if (finalCharacter === "Tech Hipster") imageName = "tech-hipster";
-//if (finalCharacter === "Creative Entrepreneur") imageName = "creative-entrepreneur";
-//if (finalCharacter === "Unicorn") imageName = "unicorn";
+if (finalCharacter === "Hacker") imageName = "hacker_img";
+if (finalCharacter === "Hipster") imageName = "hipster_img";
+if (finalCharacter === "Hustler") imageName = "hustler_img";
+if (finalCharacter === "Growth Hacker") imageName = "growth-hacker_img";
+if (finalCharacter === "Tech Hipster") imageName = "tech-hipster_img";
+if (finalCharacter === "Creative Entrepreneur") imageName = "creative-entrepreneur_img";
+if (finalCharacter === "Unicorn") imageName = "unicorn_img";
 
-document.querySelector(".container").innerHTML =
-  `<img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
-  <h2>You are a ${finalCharacter}!</h2>
-  <p>${description}</p>
-  `;
+if(finalCharacter === "Growth Hacker" || finalCharacter === "Tech Hipster" || finalCharacter === "Creative Entrepreneur")
+  {
+    document.querySelector(".container").innerHTML =
+    `<img class="result-image large" src="images/${imageName}.jpg" alt="${finalCharacter}">
+    <h2>You are a ${finalCharacter}!</h2>
+    <p>${description}</p>
+    `;
+  }
+else
+  {
+    document.querySelector(".container").innerHTML =
+    `<img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
+    <h2>You are a ${finalCharacter}!</h2>
+    <p>${description}</p>
+    `;
+  }
 }
 
 // Initial render
