@@ -214,6 +214,7 @@ function calculateResult() {
       description = "You’re action-focused and thrive on getting things done quickly and effectively.";
     }
   }
+
   // decide which image to show
 let imageName = finalCharacter.toLowerCase().replace(/ /g, "-");
 
@@ -226,11 +227,11 @@ if (finalCharacter === "Hustler") imageName = "hustler";
 //if (finalCharacter === "Creative Entrepreneur") imageName = "creative-entrepreneur";
 //if (finalCharacter === "Unicorn") imageName = "unicorn";
 
-document.querySelector(".container").innerHTML = `
-  <img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
+document.querySelector(".container").innerHTML =
+  `<img class="result-image" src="images/${imageName}.jpg" alt="${finalCharacter}">
   <h2>You are a ${finalCharacter}!</h2>
   <p>${description}</p>
-`;
+  ;
 }
 
 // Initial render
